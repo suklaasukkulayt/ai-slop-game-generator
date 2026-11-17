@@ -22,8 +22,14 @@
             <input type="checkbox" id="nomistakes" name="nomistakes" value="true">
             <label for="nomistakes"> Make no mistakes?</label><br>
             <input placeholder="Your game's coding language here" id="clanguage" name="clanguage"><br>
+            <label for="dimension">Game dimension:</label>
+            <select name="dimension" id="dimension">
+                <option value="2D">2D</option>
+                <option value="2.5D">2.5D</option>
+                <option value="3D">3D</option>
+            </select> <br>
 
-            <input type="submit">
+            <input type="submit" id="submit1" disabled>
         </form>
     </section>
 
@@ -55,9 +61,9 @@
             <label for="commit"> Commit to GitHub?</label>
             <input placeholder="Repo link (public)" id="repolink" name="repolink"><br>
 
-            <input type="submit">
+            <input type="submit" id="submit2" disabled>
         </form>
     </section>
-    <script src="script.js"></script>
+    <script src="script.js" type="module"></script>
 </body>
 </html>
