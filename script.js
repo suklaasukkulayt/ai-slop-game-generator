@@ -18,7 +18,7 @@ async function initializeAi() {
       output.value = "READY! Output prompt will appear here..."
 }
 
-async function generateText(content) {
+async function generateText(content ,either) {
     output.value = "Thinking..."
     submit1.disabled = true;
     submit2.disabled = true;
@@ -39,7 +39,7 @@ async function generateText(content) {
     ];
 
     const response = await generator(messages, {
-        max_new_tokens: 85,
+        max_new_tokens: 100,
         temperature: 0.8,
         do_sample: true,
       });
@@ -48,7 +48,13 @@ async function generateText(content) {
 
     submit1.disabled = false;
     submit2.disabled = false;
-    startPrompt(generatedText);
+
+    if (either === "start"){
+        startPrompt(generatedText);
+    } else {
+        followupPrompt(generatedText);
+    }
+    
 }
 
 initializeAi();
@@ -59,13 +65,13 @@ startForm.addEventListener('submit', (event) => {
     const gameidea = startFormData.get('gameidea');
     event.preventDefault();
     startForm.disabled = true;
-    generateText(gameidea);
+    generateText(gameidea, "start");
     } else {
         output.value = "Atleast game idea, dimension and coding language are required!!"
     }
 })
 
-function startPrompt(generatedText){
+function startPrompt(generatedtext){
     const startFormData = new FormData(startForm);
     const gameidea = startFormData.get('gameidea');
     const waybetter = startFormData.get('1000timesbetter');
@@ -74,7 +80,7 @@ function startPrompt(generatedText){
     const clanguage = startFormData.get('clanguage');
     const dimension = startFormData.get('dimension');
 
-    output.value = "Make a " + dimension + " game in " + clanguage + " coding language themed around this: " + gameidea + " and these " + generatedText + "The game has to inlude everything I just said.";
+    output.value = "Make a " + dimension + " game in " + clanguage + " coding language themed around this: " + gameidea + " and these " + generatedtext + " The game has to inlude everything I just said";
 
     if (waybetter) {
         output.value += ", also make it 1000 times better"
@@ -91,7 +97,18 @@ function startPrompt(generatedText){
 
 followupForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    generateText(featureidea);
+    const followupFormData = new FormData(followupForm);
+    const featureidea = followupFormData.get('featureidea');
+    const addfeatureidea = followupFormData.get('newfeature');
+
+    if (featureidea != "" && addfeatureidea){
+        generateText(featureidea, "follow");
+    } else {
+        followupPrompt();
+    }
+})
+
+function followupPrompt(generatedtext) {
     const followupFormData = new FormData(followupForm);
     const featureidea = followupFormData.get('featureidea');
     const addfeatureidea = followupFormData.get('newfeature');
@@ -108,8 +125,8 @@ followupForm.addEventListener('submit', (event) => {
     } else {
     output.value = "Now do these changes: \n";
 
-    if (addfeatureidea && featureidea != ""){
-        output.value += "Add these features: " + featureidea;
+    if (generatedtext != ""){
+        output.value += "Add these features: " + featureidea + " With these " + generatedtext;
     } 
 
     if (waybetter) {
@@ -157,6 +174,4 @@ followupForm.addEventListener('submit', (event) => {
     if (nomistakes) {
         output.value += " and make no mistakes."
     }
-
-})
-
+}
