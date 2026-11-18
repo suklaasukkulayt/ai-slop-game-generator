@@ -5,17 +5,18 @@ const output = document.getElementById("output");
 const followupForm = document.getElementById("followupprompt");
 const submit1 = document.getElementById("submit1");
 const submit2 = document.getElementById("submit2");
+const initializeButton = document.getElementById("initialize");
 let generator;
 
 async function initializeAi() {
-      output.value = "AI initializing..."
-    generator = await pipeline('text-generation', 'HuggingFaceTB/SmolLM2-360M-Instruct', {
-        dtype: 'q4',
-      });
+        output.value = "AI initializing..."
+        generator = await pipeline('text-generation', 'HuggingFaceTB/SmolLM2-360M-Instruct', {
+            dtype: 'q4',
+        });
 
-      submit1.disabled = false;
-      submit2.disabled = false;
-      output.value = "READY! Output prompt will appear here..."
+        submit1.disabled = false;
+        submit2.disabled = false;
+        output.value = "READY! Output prompt will appear here..."
 }
 
 async function generateText(content ,either) {
@@ -57,7 +58,15 @@ async function generateText(content ,either) {
     
 }
 
-initializeAi();
+initializeButton.addEventListener('click', () => {
+    if (output.value === "Output prompt will appear here...") {
+        initializeAi();
+        initializeButton.disabled = true;
+    } else {
+        initializeButton.disabled = true;
+    }
+    
+})
 
 startForm.addEventListener('submit', (event) => {
     if (gameidea != "" && clanguage != "" && dimension != "") {
