@@ -12,3 +12,71 @@ textarea {
 p, label {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
+#copiedDiv.open {
+    animation: copyOpen 0.5s;
+}
+
+#copiedDiv.closing {
+    animation: copyClose 0.5s;
+}
+
+#copiedDiv {
+    background-color: bisque;
+    border-radius: 16px;
+    width: fit-content;
+    position: fixed;
+    display: none;
+    transform: translate(-50%, -50%);
+    top: 5%;
+    left: 50%;
+    z-index: 10;
+    margin: 5px;
+    padding: 5px;
+    transition: ease-in-out 0.35s;
+}
+
+@keyframes copyOpen{
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes copyClose{
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+#closeBtn {
+    width: 45px;
+    height: 45px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    cursor: pointer;
+    transition: ease-in-out 0.35s;
+}
+
+#closeBtn:hover {
+    transform: scale(1.1);
+    transition: ease-in-out 0.35s;
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+#closeBtn:active {
+    transform: scale(0.9);
+    transition: ease-in-out 0.35s;
+}

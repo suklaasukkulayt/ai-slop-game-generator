@@ -184,3 +184,35 @@ function followupPrompt(generatedtext) {
         output.value += " and make no mistakes."
     }
 }
+
+const copiedDiv = document.getElementById("copiedDiv");
+const copiedTxt = document.getElementById("copiedTxt");
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+document.getElementById('output').addEventListener('click', async () => {
+    try {
+        await navigator.clipboard.writeText(output.value);
+        copiedDiv.classList.remove("closing");
+        copiedDiv.classList.add("open");
+        copiedDiv.style.display = "flex";
+        copiedTxt.textContent = "Copied!";
+
+        if(copiedDiv.style.display != "none") {
+            await wait(2000);
+            copiedDiv.classList.remove("open");
+            copiedDiv.classList.add("closing");
+            await wait(300);
+            copiedDiv.style.display = "none";
+        }
+    } catch (err) {
+        console.error('Failed to copy:', err);
+    }
+});
+
+document.getElementById("closeBtn").addEventListener('click', () => {
+    copiedDiv.classList.remove("open");
+    copiedDiv.classList.add("closing");
+    setTimeout(() => {
+        copiedDiv.style.display = "none";
+    }, 500);
+})
