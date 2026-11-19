@@ -15,7 +15,7 @@ textarea {
     resize: vertical;
 }
 
-p, label, button {
+p, label, button, input, textarea {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
@@ -24,10 +24,16 @@ p, label, button {
 }
 
 button {
-    background-color: rgb(188, 180, 74);
+    background-color: rgb(154, 188, 74);
     border-radius: 8px;
     border: 2px rgb(32, 62, 24) solid;
     transition: ease-in-out 0.35s;
+}
+
+input {
+    background-color: rgb(182, 248, 221);
+    border-radius: 8px;
+    border: 0.5px rgb(32, 62, 24) solid;
 }
 
 button:hover {
@@ -66,7 +72,7 @@ button:active {
 }
 
 #copiedDiv {
-    background-color: rgb(212, 189, 87);
+    background-color: rgb(158, 212, 87);
     border-radius: 16px;
     width: fit-content;
     position: fixed;
