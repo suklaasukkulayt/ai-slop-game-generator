@@ -7,8 +7,12 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+    <header id="header">
     <h1>AI slop game generator</h1>
     <button id="initialize">Initialize AI</button>
+    </header>
+
+    <section id="container">
 
     <section id="ideasection">
         <h3>Prompt making</h3>
@@ -30,14 +34,14 @@
                 <option value="3D">3D</option>
             </select> <br>
 
-            <input type="submit" id="submit1" disabled>
+            <input type="submit" id="submit1" class="submit" disabled>
         </form>
     </section>
 
     <section id="outputsection">
         <h3>Output prompt</h3>
 
-        <textarea readonly id="output">Output prompt will appear here...</textarea>
+        <textarea readonly id="output" title="Click to copy!">Output prompt will appear here...</textarea>
     </section>
 
     <section id="followupsection">
@@ -62,8 +66,9 @@
             <label for="commit"> Commit to GitHub?</label>
             <input placeholder="Repo link (public)" id="repolink" name="repolink"><br>
 
-            <input type="submit" id="submit2" disabled>
+            <input type="submit" id="submit2" class="submit" disabled>
         </form>
+    </section>
     </section>
 
     <div id="copiedDiv">

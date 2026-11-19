@@ -7,10 +7,45 @@ textarea {
     width: 100%;
     max-width: 700px;
     white-space: pre-line;
+    resize: vertical;
 }
 
-p, label {
+p, label, button {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+button {
+    background-color: rgb(188, 180, 74);
+    border-radius: 8px;
+    border: 2px rgb(32, 62, 24) solid;
+    transition: ease-in-out 0.35s;
+}
+
+button:hover {
+    background-color: rgb(160, 154, 66);
+}
+
+button:active {
+    background-color: rgb(160, 154, 66);
+    transform: scale(0.95);
+    transition: ease-in-out 0.35s;
+}
+
+.submit {
+    background-color: rgb(152, 188, 74);
+    border-radius: 8px;
+    border: 2px rgb(32, 62, 24) solid;
+    transition: ease-in-out 0.35s;
+}
+
+.submit:hover {
+    background-color: rgb(160, 154, 66);
+}
+
+.submit:active {
+    background-color: rgb(160, 154, 66);
+    transform: scale(0.95);
+    transition: ease-in-out 0.35s;
 }
 
 #copiedDiv.open {
@@ -79,4 +114,51 @@ p, label {
 #closeBtn:active {
     transform: scale(0.9);
     transition: ease-in-out 0.35s;
+}
+
+#ideasection {
+    background-color: rgb(177, 177, 11);
+    border-radius: 1rem;
+    margin: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 3px;
+    box-sizing: border-box;
+    width: fit-content;
+}
+
+#followupsection {
+    background-color: rgb(177, 177, 11);
+    border-radius: 1rem;
+    margin: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 3px;
+    box-sizing: border-box;
+    width: fit-content;
+}
+
+#outputsection {
+    background-color: rgb(11, 177, 25);
+    border-radius: 1rem;
+    margin: 3px;
+    padding-left: 10px;
+    padding-right: 16px;
+    padding-bottom: 3px;
+    width: 100%;
+    max-width: 520px;
+    box-sizing: border-box;
+}
+
+#header {
+    background-color: rgb(211, 255, 205);
+    margin-bottom: 20px;
+    padding: 5px;
+    text-align: center;
+}
+
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
