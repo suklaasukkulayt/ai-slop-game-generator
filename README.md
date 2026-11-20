@@ -51,3 +51,7 @@ Please wait patiently when downloading the local AI model for the first time. Th
 ![Screenshot 1](./images/screenshot1.png)  
 ![Screenshot 2](./images/screenshot2.png)  
 ![Screenshot 3](./images/screenshot3.png)  
+
+## AI usage:  
+Debugging, when something I have already tried wasn't working  
+Also plz don't make AI slop, this project is mostly a joke
