@@ -3,6 +3,7 @@
 Is vibecoding slop games too hard? Well, this website solves ALL your issues with that!!!  
 Now you might be wondering, how exactly this solves them? Soon you'll know (keep reading)!   
 Made for [Hack Club Phantom](https://phantom.hackclub.com)  
+Please wait patiently when downloading the local AI model for the first time. The browser tab might freeze when generating content.  
 
 ## Features:  
 * Make effortless prompts, perfect for all your AI (slop) games!  
@@ -45,3 +46,8 @@ Made for [Hack Club Phantom](https://phantom.hackclub.com)
 * Commit to GitHub?
 * Repo link (public)  
 * Make no mistakes?  
+
+## Screenshots:  
+![Screenshot 1](./images/screenshot1.png)  
+![Screenshot 2](./images/screenshot2.png)  
+![Screenshot 3](./images/screenshot3.png)  

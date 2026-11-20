@@ -41,7 +41,7 @@ async function initializeAi() {
         output.value = "READY! Output prompt will appear here..."
 }
 
-async function generateText(content ,either) {
+async function generateText(content, either) {
     output.value = "Thinking..."
     submit1.disabled = true;
     submit2.disabled = true;
