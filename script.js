@@ -49,15 +49,15 @@ async function generateText(content ,either) {
     const messages = [
         { 
             role: 'user', 
-            content: 'Give me 20 keywords and 2 short sentences for a game about: pirates in space' 
+            content: 'Give me 15 keywords and 2 short sentences for a game about: pirates in space' 
         },
         { 
             role: 'assistant', 
-            content: 'keywords: laser, spaceship, treasure, asteroid, galaxy, bounty, alien, chase, cannon, warp.\n Sentences: Captain Nova steered the rusty cruiser through the asteroid belt. A hidden alien treasure waited on the edge of the dark nebula.' 
+            content: 'keywords: laser, spaceship, treasure, asteroid, galaxy, bounty, alien, chase, cannon, warp, caught, collider, police, exciting, fast.\n Sentences: Captain Nova steered the rusty cruiser through the asteroid belt. A hidden alien treasure waited on the edge of the dark nebula.' 
         },
         { 
             role: 'user', 
-            content: `Give me 20 keywords and 2 short sentences for a game about: ${content}` 
+            content: `Give me 15 keywords and 2 short sentences for a game about: ${content}` 
         }
     ];
 
@@ -91,14 +91,14 @@ initializeButton.addEventListener('click', () => {
 })
 
 startForm.addEventListener('submit', (event) => {
-    if (gameidea != "" && clanguage != "" && dimension != "") {
+    if (gameidea != "" && clanguage != "") {
     const startFormData = new FormData(startForm);
     const gameidea = startFormData.get('gameidea');
     event.preventDefault();
     startForm.disabled = true;
     generateText(gameidea, "start");
     } else {
-        output.value = "Atleast game idea, dimension and coding language are required!!"
+        output.value = "Atleast a game idea and the coding language are required!!"
     }
 })
 
@@ -110,18 +110,46 @@ function startPrompt(generatedtext){
     const nomistakes = startFormData.get('nomistakes');
     const clanguage = startFormData.get('clanguage');
     const dimension = startFormData.get('dimension');
+    const gamegenre = startFormData.get('gamegenre');
+    const artstyle = startFormData.get('artstyle');
+    const levelcount = startFormData.get('levelcount');
+    const crazyfeatures = startFormData.get('crazyfeatures');
+    const sloplevel = startFormData.get('sloplevel');
+    const gametype = startFormData.get('gametype');
+    const cameraperspective = startFormData.get('cameraperspective');
+    const platform = startFormData.get('platform');
 
-    output.value = "Make a " + dimension + " game in " + clanguage + " coding language themed around this: " + gameidea + " and these " + generatedtext + " The game has to inlude everything I just said";
+    output.value = "Make a " + dimension + " " + gametype + " game in " + clanguage + " coding language themed around this: " + gameidea + " and these " + generatedtext + " The game has to inlude everything I just said";
 
     if (waybetter) {
-        output.value += ", also make it 1000 times better"
+        output.value += ", also make it 1000 times better";
     }
     if (extrafunny) {
-        output.value += ", also make it extra funny"
+        output.value += ", also make it extra funny";
     }
     if (nomistakes) {
-        output.value += " and make no mistakes."
+        output.value += " and make no mistakes.";
     }
+    if (gamegenre != "") {
+        output.value += " The game's genre is " + gamegenre + ".";
+    }
+    if (artstyle != "") {
+        output.value += " The game's artstyle is " + artstyle + ".";
+    }
+    if (levelcount != "") {
+        output.value += " The game has " + levelcount + " levels.";
+    }
+    if (cameraperspective != "") {
+        output.value += " The game's camera perspective is " + cameraperspective + ".";
+    }
+    if (platform != "") {
+        output.value += " The game's main platform is " + platform + ".";
+    }
+    if (crazyfeatures) {
+        output.value += " Also include 10 to 30 CRAZY and super funny features!";
+    }
+
+    output.value += " The game has a 'slop' value of " + sloplevel + ". Higher number means more slop, more crazy features and less realistic.";
 
     startForm.disabled = false;
 }

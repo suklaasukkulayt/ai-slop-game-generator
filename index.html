@@ -23,19 +23,47 @@
 
         <label for="startprompt">Make your first prompt:</label>
         <form id="startprompt">
-            <input placeholder="Your game idea here" id="gameidea" name="gameidea"><br>
+            <input placeholder="Your game idea" id="gameidea" name="gameidea"><br>
             <input type="checkbox" id="1000timesbetter" name="1000timesbetter" value="true">
             <label for="1000timesbetter"> Make it 1000 times better?</label><br>
             <input type="checkbox" id="extrafunny" name="extrafunny" value="true">
             <label for="extrafunny"> Make it extra funny?</label><br>
             <input type="checkbox" id="nomistakes" name="nomistakes" value="true">
             <label for="nomistakes"> Make no mistakes?</label><br>
-            <input placeholder="Your game's coding language here" id="clanguage" name="clanguage"><br>
+            <input type="checkbox" id="crazyfeatures" name="crazyfeatures" value="true">
+            <label for="crazyfeatures"> Add crazy features?</label><br>
+            <input placeholder="Coding language" id="clanguage" name="clanguage"><br>
+            <input placeholder="Game genre" id="gamegenre" name="gamegenre"><br>
+            <input placeholder="Art style" id="artstyle" name="artstyle"><br>
+            <input placeholder="Level count" id="levelcount" name="levelcount"><br>
+            <label for="sloplevel"> Slop level:</label><br>
+            <input placeholder="Slop level" id="sloplevel" name="sloplevel" type="range" min="0" max="100"><br>
             <label for="dimension">Game dimension:</label>
             <select name="dimension" id="dimension">
                 <option value="2D">2D</option>
                 <option value="2.5D">2.5D</option>
                 <option value="3D">3D</option>
+            </select> <br>
+            <label for="gametype">Game type:</label>
+            <select name="gametype" id="gametype">
+                <option value="singleplayer">Singleplayer</option>
+                <option value="multiplayer">Multiplayer</option>
+            </select> <br>
+            <label for="cameraperspective">Camera perspective:</label>
+            <select name="cameraperspective" id="cameraperspective">
+                <option value="First Person">First person</option>
+                <option value="Second person">Second person</option>
+                <option value="Third person">Third person</option>
+                <option value="Something else">Something else</option>
+            </select> <br>
+            <label for="platform">Platform:</label>
+            <select name="platform" id="platform">
+                <option value="Web">Web</option>
+                <option value="Mobile">Mobile</option>
+                <option value="PC">PC</option>
+                <option value="Console">Console</option>
+                <option value="VR">VR</option>
+                <option value="Something else">Something else</option>
             </select> <br>
 
             <input type="submit" id="submit1" class="submit" disabled>
