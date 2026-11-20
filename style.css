@@ -51,6 +51,12 @@ input, select {
     background-color: rgb(182, 248, 221);
     border-radius: 8px;
     border: 0.5px rgb(32, 62, 24) solid;
+    transition: ease-in-out 0.35s;
+}
+
+input:focus, select:focus {
+    transform: scale(1.05);
+    transition: ease-in-out 0.35s;
 }
 
 #copiedDiv.open {
@@ -62,7 +68,7 @@ input, select {
 }
 
 #copiedDiv {
-    background-color: rgb(158, 212, 87);
+    background-color: rgb(83, 145, 180);
     border-radius: 16px;
     width: fit-content;
     position: fixed;
@@ -153,6 +159,12 @@ input, select {
     width: 100%;
     max-width: 520px;
     box-sizing: border-box;
+    transition: ease-in-out 0.35s;
+}
+
+#outputsection:hover {
+    transform: scale(1.05);
+    transition: ease-in-out 0.35s;
 }
 
 #header {
