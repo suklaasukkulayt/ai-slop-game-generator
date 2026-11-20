@@ -6,16 +6,38 @@ const followupForm = document.getElementById("followupprompt");
 const submit1 = document.getElementById("submit1");
 const submit2 = document.getElementById("submit2");
 const initializeButton = document.getElementById("initialize");
+const aiProgressFill = document.getElementById("aiProgressFill");
+const aiProgressTrack = document.getElementById("aiProgressTrack");
 let generator;
+
+function setAiProgress(percent) {
+    const progress = Math.max(0, Math.min(100, Math.round(percent)));
+    aiProgressFill.style.width = progress + "%";
+    aiProgressTrack.setAttribute("aria-valuenow", progress);
+}
 
 async function initializeAi() {
         output.value = "AI initializing..."
-        generator = await pipeline('text-generation', 'HuggingFaceTB/SmolLM2-360M-Instruct', {
-            dtype: 'q4',
-        });
-
+        generator = await pipeline(
+            'text-generation',
+            'HuggingFaceTB/SmolLM2-360M-Instruct',
+            {
+                dtype: 'q4',
+                progress_callback: (info) => {
+                    if (info.status === "progress_total" && Number.isFinite(info.progress)) {
+                        setAiProgress(info.progress);
+                    } else if (typeof info.progress === "number") {
+                        setAiProgress(info.progress);
+                    } else if (info.status === "initiate") {
+                        setAiProgress(0);
+                    }
+                }
+            }
+        );
+        setAiProgress(100);
         submit1.disabled = false;
         submit2.disabled = false;
+        initializeButton.textContent = "AI Ready";
         output.value = "READY! Output prompt will appear here..."
 }
 
