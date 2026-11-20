@@ -1,5 +1,5 @@
 body {
-    background-color: antiquewhite;
+    background-color: rgb(34, 50, 68);
 }
 
 h1, h2, h3, h4 {
@@ -13,6 +13,8 @@ textarea {
     max-width: 700px;
     white-space: pre-line;
     resize: vertical;
+    color: white;
+    background-color: rgb(56, 55, 73);
 }
 
 p, label, button, input, textarea, a {
@@ -23,10 +25,20 @@ p, label, button, input, textarea, a {
     width: calc(100% - 10px);
 }
 
-button {
-    background-color: rgb(154, 188, 74);
+button, .submit {
+    background-color: rgb(74, 156, 188);
     border-radius: 8px;
     border: 2px rgb(32, 62, 24) solid;
+    transition: ease-in-out 0.35s;
+}
+
+button:hover, .submit:hover {
+    background-color: rgb(66, 104, 160);
+}
+
+button:active, .submit:active {
+    background-color: rgb(66, 75, 160);
+    transform: scale(0.95);
     transition: ease-in-out 0.35s;
 }
 
@@ -34,33 +46,6 @@ input {
     background-color: rgb(182, 248, 221);
     border-radius: 8px;
     border: 0.5px rgb(32, 62, 24) solid;
-}
-
-button:hover {
-    background-color: rgb(160, 154, 66);
-}
-
-button:active {
-    background-color: rgb(160, 154, 66);
-    transform: scale(0.95);
-    transition: ease-in-out 0.35s;
-}
-
-.submit {
-    background-color: rgb(152, 188, 74);
-    border-radius: 8px;
-    border: 2px rgb(32, 62, 24) solid;
-    transition: ease-in-out 0.35s;
-}
-
-.submit:hover {
-    background-color: rgb(160, 154, 66);
-}
-
-.submit:active {
-    background-color: rgb(160, 154, 66);
-    transform: scale(0.95);
-    transition: ease-in-out 0.35s;
 }
 
 #copiedDiv.open {
@@ -132,7 +117,7 @@ button:active {
 }
 
 #ideasection {
-    background-color: rgb(92, 212, 76);
+    background-color: rgb(73, 142, 199);
     border-radius: 1rem;
     margin: 3px;
     padding-left: 10px;
@@ -143,7 +128,7 @@ button:active {
 }
 
 #followupsection {
-    background-color: rgb(92, 212, 76);
+    background-color: rgb(73, 142, 199);
     border-radius: 1rem;
     margin: 3px;
     padding-left: 10px;
@@ -154,7 +139,7 @@ button:active {
 }
 
 #outputsection {
-    background-color: rgb(78, 223, 175);
+    background-color: rgb(70, 179, 142);
     border-radius: 1rem;
     margin: 3px;
     padding-left: 10px;
@@ -166,10 +151,11 @@ button:active {
 }
 
 #header {
-    background-color: rgb(211, 255, 205);
+    background-color: rgb(166, 193, 206);
     margin-bottom: 20px;
     padding: 5px;
     text-align: center;
+    border-radius: 8px;
 }
 
 #container {
@@ -180,7 +166,7 @@ button:active {
 
 #footer {
     text-align: center;
-    background-color: rgb(211, 255, 205);
+    background-color: rgb(166, 193, 206);
     border-radius: 8px;
 }
 
@@ -192,7 +178,7 @@ button:active {
 .aiProgressTrack {
     width: 100%;
     height: 13px;
-    background-color: rgb(190, 210, 180);
+    background-color: rgb(180, 206, 210);
     border-radius: 20px;
     overflow: hidden;
 }
@@ -200,7 +186,7 @@ button:active {
 .aiProgressFill {
     width: 0%;
     height: 100%;
-    background-color: rgb(92, 190, 76);
+    background-color: rgb(84, 76, 190);
     border-radius: 20px;
     transition: width 0.2s ease;
 }
