@@ -81,7 +81,7 @@ async function generateText(content ,either) {
 }
 
 initializeButton.addEventListener('click', () => {
-    if (output.value === "Output prompt will appear here...") {
+    if (output.value === "Initialize AI first...") {
         initializeAi();
         initializeButton.disabled = true;
     } else {
@@ -91,11 +91,11 @@ initializeButton.addEventListener('click', () => {
 })
 
 startForm.addEventListener('submit', (event) => {
+    event.preventDefault();
     const startFormData = new FormData(startForm);
     const gameidea = startFormData.get('gameidea');
     const clanguage = startFormData.get('clanguage');
     if (gameidea != "" && clanguage != "") {
-    event.preventDefault();
     startForm.disabled = true;
     generateText(gameidea, "start");
     } else {
@@ -162,19 +162,19 @@ function startPrompt(generatedtext){
 followupForm.addEventListener('submit', (event) => {
     event.preventDefault();
     const followupFormData = new FormData(followupForm);
-    const featureidea = followupFormData.get('featureidea');
+    const featureidea = (followupFormData.get('featureidea') || '').trim();
     const addfeatureidea = followupFormData.get('newfeature');
 
-    if (featureidea != "" && addfeatureidea){
-        generateText(featureidea, "follow");
+    if (featureidea && addfeatureidea) {
+        generateText(featureidea, 'follow');
     } else {
-        followupPrompt();
+        followupPrompt('');
     }
-})
+});
 
 function followupPrompt(generatedtext) {
     const followupFormData = new FormData(followupForm);
-    const featureidea = followupFormData.get('featureidea');
+    const featureidea = (followupFormData.get('featureidea') || "").trim();
     const addfeatureidea = followupFormData.get('newfeature');
     const waybetter = followupFormData.get('1000timesbetter2');
     const extrafunny = followupFormData.get('extrafunny2');
@@ -183,14 +183,14 @@ function followupPrompt(generatedtext) {
     const morefeatures = followupFormData.get('morefeatures');
     const morelevels = followupFormData.get('morelevels');
     const commit = followupFormData.get('commit');
-    const repolink = followupFormData.get('repolink');
+    const repolink = (followupFormData.get('repolink') || "").trim();
 
-    if(!addfeatureidea && !waybetter && !extrafunny && !nomistakes && !fixbugs && !morefeatures && !commit) {
+    if(!addfeatureidea && !waybetter && !extrafunny && !fixbugs && !morefeatures && !commit && !morelevels) {
         output.value = "Atleast some changes are required!"
     } else {
     output.value = "Now do these changes: \n";
 
-    if (generatedtext != ""){
+    if (generatedtext && generatedtext.trim() !== "") {
         output.value += "Add these features: " + featureidea + " With these " + generatedtext;
     } 
 
@@ -235,6 +235,8 @@ function followupPrompt(generatedtext) {
         if (output.value === "Now do these changes: \n"){
             if (repolink != ""){
             output.value += "commit this to GitHub: " + repolink;
+        } else {
+            output.value = "You have commit to GitHub enabled, but no repo link is included!"
         }
         } else {
             if (repolink != ""){

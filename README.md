@@ -1,2 +1,8 @@
-# ai-slop-game-generator
-Make all the AI slop games you want with a simple idea. This generates the best prompt from your idea that you can paste to your fav AI!
+# AI slop game generator  
+## Random Info:  
+Is vibecoding games too hard? Well, this website solves ALL your issues with that!!!  
+Now you might be wondering, how exactly this solves them?   
+Made for [Hack Club Phantom](https://phantom.hackclub.com)  
+
+## Features:  
+* Make effortless prompts, good for all your AI (slop) games
