@@ -91,9 +91,10 @@ initializeButton.addEventListener('click', () => {
 })
 
 startForm.addEventListener('submit', (event) => {
-    if (gameidea != "" && clanguage != "") {
     const startFormData = new FormData(startForm);
     const gameidea = startFormData.get('gameidea');
+    const clanguage = startFormData.get('clanguage');
+    if (gameidea != "" && clanguage != "") {
     event.preventDefault();
     startForm.disabled = true;
     generateText(gameidea, "start");
