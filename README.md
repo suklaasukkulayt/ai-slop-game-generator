@@ -54,4 +54,5 @@ Please wait patiently when downloading the local AI model for the first time. Th
 
 ## AI usage:  
 Debugging, when something I have already tried wasn't working  
+Also example code for importing the local AI model, I of course modified the code to fit my needs!  
 Also plz don't make AI slop, this project is mostly a joke
