@@ -103,7 +103,7 @@ startForm.addEventListener('submit', (event) => {
 })
 
 function startPrompt(generatedtext){
-    const startFormData = new FormData(startForm);
+    const startFormData = new FormData(startForm); 
     const gameidea = startFormData.get('gameidea');
     const waybetter = startFormData.get('1000timesbetter');
     const extrafunny = startFormData.get('extrafunny');
@@ -118,6 +118,7 @@ function startPrompt(generatedtext){
     const gametype = startFormData.get('gametype');
     const cameraperspective = startFormData.get('cameraperspective');
     const platform = startFormData.get('platform');
+    const noaiui = startFormData.get('noaiui');
 
     output.value = "Make a " + dimension + " " + gametype + " game in " + clanguage + " coding language themed around this: " + gameidea + " and these " + generatedtext + " The game has to inlude everything I just said";
 
@@ -148,6 +149,9 @@ function startPrompt(generatedtext){
     if (crazyfeatures) {
         output.value += " Also include 10 to 30 CRAZY and super funny features!";
     }
+    if (noaiui) {
+        output.value += " Also make sure that the UI doesn't look AI generated, make it look human, but still fitting in the theme.";
+    }
 
     output.value += " The game has a 'slop' value of " + sloplevel + ". Higher number means more slop, more crazy features and less realistic.";
 
@@ -176,6 +180,7 @@ function followupPrompt(generatedtext) {
     const nomistakes = followupFormData.get('nomistakes2');
     const fixbugs = followupFormData.get('fixbugs');
     const morefeatures = followupFormData.get('morefeatures');
+    const morelevels = followupFormData.get('morelevels');
     const commit = followupFormData.get('commit');
     const repolink = followupFormData.get('repolink');
 
@@ -215,6 +220,13 @@ function followupPrompt(generatedtext) {
             output.value += "add EVEN MORE features"
         } else {
             output.value += ", add EVEN MORE features"
+        }
+    }
+    if (morelevels) {
+        if (output.value === "Now do these changes: \n"){
+            output.value += "add more levels and content"
+        } else {
+            output.value += ", add more levels and content"
         }
     }
     }
